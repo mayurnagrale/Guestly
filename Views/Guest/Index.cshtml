@@ -1,0 +1,98 @@
+﻿@model Guestly.ViewModels.GuestAndAddress
+@{
+    ViewBag.Title = "Create Guest";
+}
+
+<div class="container">
+    <h2>Create Guest</h2>
+
+    <div class="box">
+        
+        @using (Html.BeginForm("Create", "Guest", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <h3>Contact Info</h3>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GuestInfo.GuestName, "GuestName:")
+                    @Html.TextBoxFor(model => model.GuestInfo.GuestName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GuestInfo.GuestName)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.GuestInfo.Mobile, "Mobile:")
+                    @Html.TextBoxFor(model => model.GuestInfo.Mobile, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.GuestInfo.Telephone, "Telephone:")
+                    @Html.TextBoxFor(model => model.GuestInfo.Telephone, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.GuestInfo.Fax, "Fax:")
+                    @Html.TextBoxFor(model => model.GuestInfo.Fax, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.GuestInfo.Email, "Email:")
+                    @Html.TextBoxFor(model => model.GuestInfo.Email, new { @class = "form-control" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.GuestInfo.WebSite, "Website:")
+                    @Html.TextBoxFor(model => model.GuestInfo.WebSite, new { @class = "form-control" })
+                </div>
+            </div>
+            
+            <h3>Address Info</h3>
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.AddressInfo.Street, "Street:")
+                    @Html.TextBoxFor(model => model.AddressInfo.Street, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AddressInfo.Street)
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.AddressInfo.Number, "Number:")
+                    @Html.TextBoxFor(model => model.AddressInfo.Number, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.AddressInfo.Box, "Box:")
+                    @Html.TextBoxFor(model => model.AddressInfo.Box, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.AddressInfo.PostalCode, "Postal Code:")
+                    @Html.TextBoxFor(model => model.AddressInfo.PostalCode, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.AddressInfo.Country, "Country:")
+                    @Html.TextBoxFor(model => model.AddressInfo.Country, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.AddressInfo.Location, "Location:")
+                    @Html.TextBoxFor(model => model.AddressInfo.Location, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <input type="submit" value="Save Changes" class="btn btn-primary btn-block" />
+                    <input type="reset" value="Cancel" class="btn btn-default btn-block" />
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
